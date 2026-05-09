@@ -83,6 +83,7 @@ const UploadPanel = () => {
       setUploads(prev => [localUpload, ...prev]);
     };
     reader.readAsDataURL(file);
+    
 
     const formData = new FormData();
     formData.append('image', file);
