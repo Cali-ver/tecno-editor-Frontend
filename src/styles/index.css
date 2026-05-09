@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-bg-main: #ffffff;
+  --color-text-main: #0e1318;
+  --color-text-muted: #5e6267;
+  --color-border-color: #e1e4e8;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-text-main antialiased font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-md text-sm font-semibold transition-all shadow-sm;
+  }
+  .btn-outline {
+    @apply border border-gray-300 hover:bg-gray-50 text-gray-700 px-5 py-2 rounded-md text-sm font-semibold transition-all;
+  }
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-8;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
+  }
+}
+
+/* Custom styles for Canva-like UI */
+.canva-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 10% 20%, rgb(255, 255, 255) 0%, rgb(240, 244, 255) 90%);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
