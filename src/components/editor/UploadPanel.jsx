@@ -92,7 +92,7 @@ const UploadPanel = () => {
     setProgress(0);
 
     try {
-      const response = await api.post('/api/images/upload', formData, {
+      const response = await api.post('/images/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
           const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
@@ -201,7 +201,7 @@ const UploadPanel = () => {
 
     setRemovingBg(true);
     try {
-      const response = await api.post('/api/remove-bg', { imageUrl: currentUrl });
+      const response = await api.post('/remove-bg', { imageUrl: currentUrl });
       const newUrl = response.data.url || response.data; // Adjust based on your actual backend response
       
       fabric.Image.fromURL(

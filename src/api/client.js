@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:8080',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api',
 });
 
 // Request interceptor: attach Authorization: Bearer <token>
@@ -35,22 +35,22 @@ client.interceptors.response.use(
 const api = client;
 
 export const designAPI = {
-  getAll: () => api.get('/api/designs'),
-  getPublic: () => api.get('/api/designs/public'),
-  getById: (id) => api.get(`/api/designs/${id}`),
-  create: (data) => api.post('/api/designs', data),
-  update: (id, data) => api.put(`/api/designs/${id}`, data),
-  updateAccessLevel: (id, level) => api.put(`/api/designs/${id}/access-level?accessLevel=${level}`),
-  delete: (id) => api.delete(`/api/designs/${id}`),
-  sendToPhone: (phoneNumber, message) => api.post('/api/sms/send', { phoneNumber, message }),
-  sendEmail: (email, message) => api.post('/api/email/send', { email, message })
+  getAll: () => api.get('/designs'),
+  getPublic: () => api.get('/designs/public'),
+  getById: (id) => api.get(`/designs/${id}`),
+  create: (data) => api.post('/designs', data),
+  update: (id, data) => api.put(`/designs/${id}`, data),
+  updateAccessLevel: (id, level) => api.put(`/designs/${id}/access-level?accessLevel=${level}`),
+  delete: (id) => api.delete(`/designs/${id}`),
+  sendToPhone: (phoneNumber, message) => api.post('/sms/send', { phoneNumber, message }),
+  sendEmail: (email, message) => api.post('/email/send', { email, message })
 };
 
 export const uploadAPI = {
-  upload: (formData) => api.post('/api/images/upload', formData, {
+  upload: (formData) => api.post('/images/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   }),
-  delete: (id) => api.delete(`/api/images/${id}`)
+  delete: (id) => api.delete(`/images/${id}`)
 };
 
 export default api;
