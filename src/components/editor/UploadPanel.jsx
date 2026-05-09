@@ -127,7 +127,10 @@ const UploadPanel = () => {
 
   const getImageUrl = (item) => {
     if (item.url) return item.url;
-    if (item.filename) return `http://localhost:8080/api/uploads/files/${item.filename}`;
+    if (item.filename) {
+      const backendUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:8080';
+      return `${backendUrl}/api/uploads/files/${item.filename}`;
+    }
     return '';
   };
 
